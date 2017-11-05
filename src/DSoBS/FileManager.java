@@ -21,29 +21,16 @@ public class FileManager {
 		return file.list();
 	}
 
-	public BufferedImage[] getRandomImages(int size) {
-		String[] filenames = findAllImages();
-		if(size < filenames.length) {
+	public BufferedImage[] getRandomBufferedImages(int size) {
+		String[] filenames = getRandomImagesPaths(size);
+		if(filenames == null) {
 			return null;
 		}
 
 		BufferedImage[] images = new BufferedImage[size];
-		HashMap<Integer,Integer> setted = new HashMap<Integer, Integer>();
-
 		try {
-			int i = 0;
-			Random random = new Random();
-			while(i < images.length) {
-				int index;
-
-				do {
-					index = random.nextInt(filenames.length);
-				} while (setted.containsKey(Integer.valueOf(index)));
-
-
-				images[i++] = ImageIO.read(new File(FOLDER_PATH + filenames[index]));
-
-				setted.put(Integer.valueOf(index), 0);
+			for(int i = 0; i < filenames.length; i++) {
+				images[i] = ImageIO.read(new File(filenames[i]));
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -53,4 +40,32 @@ public class FileManager {
 		return images;
 	}
 
+
+	public String[] getRandomImagesPaths(int size) {
+		String[] filenames = findAllImages();
+		System.out.println(filenames.length);
+		if(size > filenames.length) {
+			return null;
+		}
+
+		String[] images = new String[size];
+		HashMap<Integer,Integer> setted = new HashMap<Integer, Integer>();
+
+
+		int i = 0;
+		Random random = new Random();
+		while(i < images.length) {
+			int index;
+
+			do {
+				index = random.nextInt(filenames.length);
+			} while (setted.containsKey(Integer.valueOf(index)));
+
+
+			images[i++] = FOLDER_PATH + filenames[index];
+
+			setted.put(Integer.valueOf(index), 0);
+		}
+		return images;
+	}
 }
