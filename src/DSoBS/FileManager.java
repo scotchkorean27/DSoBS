@@ -16,12 +16,12 @@ public class FileManager {
 	 * Find the name of all images in the Images folder
 	 * @return
 	 */
-	public String[] findAllImages() {
+	public static String[] findAllImages() {
 		File file = new File(FOLDER_PATH);
 		return file.list();
 	}
 
-	public BufferedImage[] getRandomBufferedImages(int size) {
+	public static BufferedImage[] getRandomBufferedImages(int size) {
 		String[] filenames = getRandomImagesPaths(size);
 		if(filenames == null) {
 			return null;
@@ -41,7 +41,7 @@ public class FileManager {
 	}
 
 
-	public String[] getRandomImagesPaths(int size) {
+	public static String[] getRandomImagesPaths(int size) {
 		String[] filenames = findAllImages();
 		System.out.println(filenames.length);
 		if(size > filenames.length) {

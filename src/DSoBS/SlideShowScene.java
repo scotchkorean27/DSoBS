@@ -23,9 +23,13 @@ import javafx.scene.shape.Rectangle;
 public class SlideShowScene{
 	private ImageView iv1;
 	private Scene scene;
+	private int imageIndex;
+	private String[] imagePaths;
 	
-	public SlideShowScene() {
+	public SlideShowScene(String[] imagePaths) {
+		imageIndex = 0;
 		scene = createScene();
+		this.imagePaths = imagePaths;
 	}
 
 	public Scene getScene() {
@@ -63,7 +67,7 @@ public class SlideShowScene{
 		root.getChildren().add(box);
 
 
-		return (new Scene(root, 300, 250));
+		return (new Scene(root, 1024, 960));
 	}
 
 	public void changeImage(String filepath) {
@@ -75,5 +79,10 @@ public class SlideShowScene{
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
+	}
+	
+	public void advanceImage() {
+		changeImage(imagePaths[imageIndex]);
+		imageIndex++;
 	}
 }
