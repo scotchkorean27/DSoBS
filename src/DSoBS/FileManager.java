@@ -43,7 +43,6 @@ public class FileManager {
 
 	public static String[] getRandomImagesPaths(int size) {
 		String[] filenames = findAllImages();
-		System.out.println(filenames.length);
 		if(size > filenames.length) {
 			return null;
 		}

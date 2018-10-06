@@ -1,24 +1,14 @@
 package DSoBS;
 
-import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 
 public class SlideShowScene{
 	private ImageView iv1;
@@ -67,7 +57,7 @@ public class SlideShowScene{
 		root.getChildren().add(box);
 
 
-		return (new Scene(root, 1024, 960));
+		return (new Scene(root, 1280, 720));
 	}
 
 	public void changeImage(String filepath) {

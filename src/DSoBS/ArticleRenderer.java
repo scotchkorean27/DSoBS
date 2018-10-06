@@ -18,7 +18,6 @@ class ArticleRenderer extends Region {
         webEngine.load("https://en.wikipedia.org/wiki/Special:Random");
         //add the web view to the scene
         getChildren().add(browser);
- 
     }
  
     @Override protected void layoutChildren() {
